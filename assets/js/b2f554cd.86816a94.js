@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkoop345=self.webpackChunkoop345||[]).push([[477],{10:function(o){o.exports={blogPosts:[]}}}]);
