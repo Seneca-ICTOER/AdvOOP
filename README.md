@@ -120,7 +120,7 @@ Tool Recommendation: Firefox Browser (easier to make screenshots)
 
 ![](static/img/download-selected-region.png)
 
-8. Save image to the `/static/img` folder in the Intro2C repo
+8. Save image to the `/static/img` folder in the repo
 
 9. This is how it should end up looking like:
 
