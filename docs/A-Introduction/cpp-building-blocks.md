@@ -639,7 +639,7 @@ a = new A(); // object without a name (*a is created on the heap) - not a variab
 
 C++ uses subobject terminology.  An object may be a *subobject* of another object.  For example, a base object is a subobject of a derived object. 
 
-![Object with a Subobject](/resources/subobject.png)
+![Object with a Subobject](/img/subobject.png)
 
 A *complete* object is an object that is not part of any other object.  The lifetimes of non-static members and base subobjects begin and end following class initialization order.
 

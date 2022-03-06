@@ -30,7 +30,7 @@ Transforming the original source code for an application into a binary executabl
 2. Compilation Stage - the compiler creates a separate binary file from each translation unit
 3. Linking Stage - the linker creates a single relocatable file from the binary files for all translation units and the binary files for any referenced libraries.
 
-![Pre-Processing, Compilation and Linking Stages of the Compilation Process](/resources/compile_link.png)
+![Pre-Processing, Compilation and Linking Stages of the Compilation Process](/img/compile_link.png)
 
 To run the executable, the user instructs the operating system to load the relocatable file into memory.  The loader copies the relocatable file into RAM, arranges the storage locations for the data and the code and transfers control to the entry point of the executable (the `main()` function).
 
