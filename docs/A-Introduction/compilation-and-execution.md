@@ -241,8 +241,9 @@ int main()
 N <= 0
 static assertion failed with "N <= 0"
 ```
- 
 
+
+<!--
 ## Exercises
 
-- Complete the Workshop on [Across Translation Units](https://ict.senecacollege.ca/~btp305/dynamic/workshops/w1.html)
+-->

@@ -417,7 +417,7 @@ An array type is a built-in type that consists of elements of identical type arr
 - pointer types
 - pointer to member types
 - class types
-- enumeration types (see the chapter entitled [Classes and Scoped Enumerations](B-Types/classes-and-scoped-enumerations))
+- enumeration types (see the chapter entitled [Classes and Scoped Enumerations](/B-Types/classes-and-scoped-enumerations))
 
 Note that an array cannot be constructed directly from reference types.
 

@@ -783,7 +783,7 @@ int main()
 
 
 
-## Variadic Templates (optional)
+## Variadic Templates (optional for OOP345)
 
 
 A template that accepts an arbitrary number of arguments is called a **variadic** template.  A declaration of a variadic template includes a *parameter-pack* as one of its parameters.  An ellipsis to the left of the parameter name identifies a parameter-pack.  A parameter-pack is either a *template parameter-pack* or a *function parameter-pack*.  For example, the following declares a class named `Variadic` that takes at least one argument:

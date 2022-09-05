@@ -689,6 +689,6 @@ Note that the second call to `display()` does not re-initialize `n`.
 
 ## Exercises
 
-- Complete the practice problem in the [Handout on Synonyms and Storage Duration](https://ict.senecacollege.ca/~btp305/pages/handouts/h4.html).
+<!-- - Complete the practice problem in the [Handout on Synonyms and Storage Duration](https://ict.senecacollege.ca/~btp305/pages/handouts/h4.html).-->
 - Read StackOverflow on [C++ subobjects and Java super classes and sub classes](http://stackoverflow.com/questions/18451683/c-disambiguation-subobject-and-subclass-object)
 - Read Wikipedia on the [C++17 Standard](https://en.wikipedia.org/wiki/C%2B%2B17)
