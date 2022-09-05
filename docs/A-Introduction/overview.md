@@ -23,7 +23,7 @@ This chapter reviews the object-oriented programming paradigm, introduces some o
 
 
 
-## OBJECT-ORIENTED PARADIGM
+## Object-Oriented Paradigm
 
 The object-oriented paradigm frames programming solutions as sets of objects that interact with one another in their problem domain.  Objects are instances of classes, where a class defines the structure of an object.  Each object has its own **state**, which is stored in the form of the values of its *instance variables* or *attributes*.  The functions that operate on an object's state are the *member functions* or *methods* of the class to which the object belongs.
 
@@ -60,13 +60,13 @@ This flexibility is a distinguishing feature of object-oriented languages.
 
 Object-oriented solutions lend themselves naturally to modular partitioning of source code.  Modules define classes and their implementations.  The source code for a module is stored in a file or file set.  The file or file set holds a self-contained partition of that source code.  Each module is compiled separately.
 
-!["TODO"](/img/application.png)
+![A typical application](/img/application.png)
 
 Updates to a specific module only require recompilation of that module along with those directly affected by the changes in the class definition.  All other modules need not be recompiled.
 
 
 
-## BUILDING BLOCKS
+## Building Blocks
 
 
 The common building blocks of an object-oriented language include:
@@ -92,7 +92,7 @@ The *value* that an object holds is the contents of the memory region allocated 
 
 The type of an object relates the object to its underlying implementation and identifies the operations that the object can perform.
 
-!["Object Type Implementation"](/img/type definition.png)
+![Object Type Implementation](/img/type_definition.png)
 
 #### Type Categories
 
@@ -126,15 +126,15 @@ A name has a *linkage* if it can refer to an identical name declared in another 
 
 The linkage of a name may be
 - external - connected across different scopes in different modules
-  !["External Linkage"](/img/external linkage.png)
+  !["External Linkage"](/img/linkage_external.png)
 - internal - connected across different scopes within the same module
-  !["Internal Linkage"](/img/Internal linkage.png)
+  !["Internal Linkage"](/img/linkage_internal.png)
 - non-existent - not connected to any entity outside its own scope
-  !["No Linkage"](/img/no linkage.png)
+  !["No Linkage"](/img/linkage_none.png)
 
 
 
-## COMPILERS
+## Compilers
 
 
 Compilers translate the source code of modules into binary code that is assembled to form a single executable version of program.  The source code of a module is written in a specific language.  Compilers are language specific programs. 
@@ -187,12 +187,12 @@ Most systems allocate heap and stack memory for an executable next to one anothe
 
 Memory organization varies between operating systems and compilers.  Possible organizations are shown below.
 
-!["Allocation of Memory for an Application by the Operating System"](/img/memory organization.png)
+!["Allocation of Memory for an Application by the Operating System"](/img/memory_organization.png)
 
 
 
 
-## THE TOPIC GROUPINGS
+## The Topic Groupings
 
 
 The material covered in these notes is organized under six groups.  Each group addresses a distinct aspect of object-oriented programming and is a collection of several chapters.  These groups are entitled:
@@ -206,7 +206,7 @@ The material covered in these notes is organized under six groups.  Each group a
 
 
 
-## EXERCISES
+## Exercises
 
 - Install the `Microsoft Visual Studio` compiler on your Windows computer
 - Install an `ssh` client on your local computer to access a `GCC` platform
