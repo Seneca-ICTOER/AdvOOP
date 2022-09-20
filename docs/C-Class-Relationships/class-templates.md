@@ -92,8 +92,8 @@ A non-type template parameter may be one of the following types
 - a pointer to a object or a function
 - an lvalue reference to an object or a function
 - a pointer to a member
-- std::nullptr_t
-- auto
+- `std::nullptr_t`
+- `auto`
 
 Note that a non-type template parameter may not be a floating-point type (before C++20).
 
@@ -196,7 +196,7 @@ int main(int argc, char* argv[])
 
 If the program is started with the command
 ```
- >swap 2.3 4.5 78 567
+> swap 2.3 4.5 78 567
 ```
 the output is
 ```
@@ -523,17 +523,17 @@ Non-type template parameters can receive the size of an array.  For example:
 // Non-Type Template Parameters
 // array.h
 
-template <typename T, int size>
+template <typename T, int SIZE>
 class Array
 {
-	T a[size];
+	T a[SIZE];
 	unsigned n;
 	T dummy;
 public:
-	Array() : n{0u}, dummy{0} {}
+	Array() : n{0u}, dummy{} {}
 	T& operator[](unsigned i)
 	{
-		return i < 50u ? a[i] : dummy; 
+		return i < SIZE ? a[i] : dummy; 
 	}
 };
 ```
@@ -577,17 +577,17 @@ A template declaration for a family of classes accepts default parameter values.
 // Default Template Parameter Values
 // array.h
 
-template <typename T = int, int size = 50> 
+template <typename T = int, int SIZE = 50> 
 class Array
 {
-	T a[size];
+	T a[SIZE];
 	unsigned n;
 	T dummy;
 public:
-	Array() : n(0), dummy(0) {}
+	Array() : n(0), dummy() {}
 	T& operator[](unsigned i)
 	{
-		return i < 50u ? a[i] : dummy; 
+		return i < SIZE ? a[i] : dummy; 
 	}
 };
 ```
@@ -633,28 +633,34 @@ Into our `Array` example, let us insert a class variable named `count` to count 
 // Static Data Member Declaration
 // array.h
 
-template <typename T = int, int size = 50> 
+template <typename T = int, int SIZE = 50> 
 class Array
 {
-	T a[size];
+	T a[SIZE];
 	unsigned n;
 	T dummy;
-	static unsigned count;
+	static unsigned m_count;               // <-- class member (aka type member)
 
 public:
-	Array() : n{0}, dummy{0} { ++count; }
-	~Array() { --count; }
+	Array() : n{0}, dummy{} { ++m_count; }
+	~Array() { --m_count; }
 
 	T& operator[](unsigned i)
 	{
-		return i < 50u ? a[i] : dummy; 
+		return i < SIZE ? a[i] : dummy; 
 	}
 
-	static unsigned cnt() { return count; }
+	static unsigned getCount();           // <-- class member (aka type member)
 };
 
-template <typename T = int, int size = 50>
-unsigned Array<T>::count = 0u;
+template <typename T, int SIZE>
+unsigned Array<T, SIZE>::m_count = 0u;
+
+template <typename T, int SIZE>
+unsigned Array<T, SIZE>::getCount()
+{
+	return Array<T, SIZE>::m_count;
+}
 ```
 
 Note that the parameter list following the `template` keyword for the family of class variables is identical to the list for the family of classes.
@@ -678,9 +684,9 @@ int main()
 	Array<double> u;
 	Array<int, 40> v;
 
-	std::cout << Array<>::cnt() << std::endl;
-	std::cout << Array<double>::cnt() << std::endl;
-	std::cout << Array<int, 40>::cnt() << std::endl; 
+	std::cout << Array<>::getCount()        << std::endl;
+	std::cout << Array<double>::getCount()  << std::endl;
+	std::cout << Array<int, 40>::getCount() << std::endl; 
 }
 ```
 

@@ -420,6 +420,7 @@ First run :
 s (sphere), c (cube) : s
 dimension : 1
 4.18879
+4.18879
 
 
 Second run :
@@ -427,11 +428,12 @@ Second run :
 s (sphere), c (cube) : c
 dimension : 2
 8
+8
 ```
 
 
 
-### Specializing an Operation for a Dynamic Type (Optional)
+### Specializing an Operation for a Dynamic Type (Optional for OOP345)
 
 
 In expressions that involve operands of polymorphic type, the operator functions require knowledge of the received object's dynamic type.  A *dynamic cast* returns this type. 
@@ -649,7 +651,7 @@ Different
 
 
 
-### Dynamic Type Identification (Optional)
+### Dynamic Type Identification (Optional for OOP345)
 
 
 The C++ language includes two elements that hold run-time information in addition to `dynamic_cast` for identifying a polymorphic object's dynamic type.  These elements can be used where type specific coding beyond the virtual mechanism is required.
