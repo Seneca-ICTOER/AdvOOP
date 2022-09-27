@@ -25,7 +25,7 @@ The algorithms category of the C++ STL provides a variety of common programming 
 
 Each library is independent of any other library. 
 
-This chapter introduces each library of the algorithms category in turn and describes some commonly used features.  This introduction includes descriptions of selected functions with examples.  For fuller details, see the online references cited in the [tutorials section](/resources/tutorials.html) of the course web site.
+This chapter introduces each library of the algorithms category in turn and describes some commonly used features.  This introduction includes descriptions of selected functions with examples.  <!-- MISSING For fuller details, see the online references cited in the [tutorials section](/resources/tutorials.html) of the course web site.-->
 
 
 

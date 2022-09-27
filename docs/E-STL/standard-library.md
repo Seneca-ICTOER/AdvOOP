@@ -96,7 +96,7 @@ The categories of the C++ standard library are listed below.  The header files f
 
 Most library components are declared and defined in the `std` namespace.  The filesystem component is declared and defined in the `filesystem` namespace.  The library macros are predefined in the global namespace.
 
-The C++ Standard Library makes available the facilities of the C Standard Library.  A review of the input/output features is in the appendices entitled [The C Libraries](missing) and [How C++ and C Fit Together](missing).
+The C++ Standard Library makes available the facilities of the C Standard Library.  <!--MISSING A review of the input/output features is in the appendices entitled [The C Libraries](missing) and [How C++ and C Fit Together](missing).-->
 
 
 
