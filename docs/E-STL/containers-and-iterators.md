@@ -128,7 +128,7 @@ The iterators described below provide an alternative method of access to ranges 
 
 The `deque` class template defines classes that manage doubly-ended queues that can change in size from either end and have elements ordered in sequence.  Insertion and deletion of elements at either end is efficient, but elements can be scattered throughout memory in different chunks of storage and contiguous storage is not guaranteed. 
 
-![Deque](deque.png)
+![Deque](/img/deque.png)
 
 The `deque` class template is defined in the header `<deque>`.
 
