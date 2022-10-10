@@ -397,7 +397,7 @@ int main()
 	prices.push_back(20.54); // add 20.54
 	prices.push_back(32.43); // add 32.43
 
-	for(it = prices.begin(); it != prices.end(); i++)
+	for(it = prices.begin(); it != prices.end(); it++)
 		std::cout << *it << "  ";
 	std::cout << std::endl;
 }
@@ -410,7 +410,7 @@ int main()
 We can omit the declaration of `i` and use `auto` in the initializer of the `for` iteration:
 
 ```cpp
-for(auto it = prices.begin(); it != prices.end(); i++)
+for(auto it = prices.begin(); it != prices.end(); it++)
 	std::cout << *it << "  ";
 ```
 
@@ -452,8 +452,8 @@ int main()
 	prices.insert(--prices.end(), 12.52);
 	prices.erase(++prices.begin());
 	
-	for(auto i = prices.begin(); i != prices.end(); i++) 
-		std::cout << *i << "  ";
+	for(auto it = prices.begin(); it != prices.end(); it++) 
+		std::cout << *it << "  ";
 	std::cout << std::endl;
 }
 ```
@@ -482,15 +482,15 @@ int main()
 	p.back() = 32.43;   // reset last 
 	p.erase(p.begin()); // remove first
 
-	for(auto i = p.begin(); i != p.end(); i++) 
-		std::cout << *i << "  ";
+	for(auto it = p.begin(); it != p.end(); it++) 
+		std::cout << *it << "  ";
 	std::cout << std::endl;
 	
 	p.insert(++p.begin(), 15.64);
 	p.insert(p.end(), 20.31);
 	
-	for(auto i = p.begin(); i != p.end(); i++)
-		std::cout << *i << "  ";
+	for(auto it = p.begin(); it != p.end(); it++)
+		std::cout << *it << "  ";
 	std::cout << std::endl;
 }
 ```
