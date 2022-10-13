@@ -215,24 +215,24 @@ A `list` object admits comparison, assignment, expansion, element addition, and 
 
 - `list()` - default constructor; creates an empty container
 - `list(int n)` - creates a container with `n` elements
-- `list(int n, const T& l)` - creates a container with `n` elements, each initialized to value `l`
-- `list(const list& l)` - copies the contents of `v` into the current object
-- `list(list&& l) noexcept` - copies the contents of `v` into the current object
+- `list(int n, const T& val)` - creates a container with `n` elements, each initialized to value `val`
+- `list(const list& other)` - copies the contents of `other` into the current object
+- `list(list&& other) noexcept` - moves the content of `other` into the current object
 - `~list()` - destroys the container
-- `list& operator=(const list& l)` - copies the contents of `l` into the current object
-- `list& operator=(list&& l) noexcept` - moves the contents of `l` into the current object
+- `list& operator=(const list& other)` - copies the contents of `other` into the current object
+- `list& operator=(list&& other) noexcept` - moves the contents of `other` into the current object
 - `size_t size() const` - returns the number of elements in the current object
 - `bool empty() const` - returns `true` if the current object has no elements
 - `T& front()` - returns a reference to the first element
 - `const T& front() const` - returns an unmodifiable reference to the first element
 - `T& back()` - returns a reference to the last element
 - `const T& back() const` - returns an unmodifiable reference to the last element
-- `void push_back(const T& t)` - adds element `t` after the last element in the container
-- `void push_front(const T& t)` - adds element `t` before the first element in the container
+- `void push_back(const T& elem)` - adds element `elem` after the last element in the container
+- `void push_front(const T& elem)` - adds element `elem` before the first element in the container
 - `void pop_back()` - removes the last element from the container
 - `void pop_front()` - removes the first element from the container
-- `iterator insert(iterator position, const T& t)` - adds element `t` at the iterator position
-- `iterator erase(iterator position, const T& t)` - remove element `t` at the iterator position
+- `iterator insert(iterator position, const T& elem)` - adds element `elem` at the iterator position
+- `iterator erase(iterator position, const T& elem)` - remove element `elem` at the iterator position
 - `void clear()` - removes all elements from the container
 
 The subscripting operators and the `at(int)` member functions, which provide direct element access in other sequential containers, are not supported in this template.  Instead, the template defines `insert()` and `erase()` member functions that use iterators.  The section on iterators below described these in more detail.
