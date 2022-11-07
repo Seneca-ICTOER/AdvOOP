@@ -60,6 +60,8 @@ description: Contents of Object Oriented Software Development (C++)
 
 ## Appendices
 
+- [The C Libraries](Resources-Appendices/c-libraries.md)
+- [How C++ and C Fit Together](Resources-Appendices/c-and-cpp.md)
 - [String Class](Resources-Appendices/string-class.md)
 - [Doubly Linked List](Resources-Appendices/doubly-linked-list.md)
 - [Platform I/O Dependencies](Resources-Appendices/platform-io-dependencies.md)
