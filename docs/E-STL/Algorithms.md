@@ -355,7 +355,7 @@ int main()
 	
 	int n = std::count_if(a, a + 11, [](int i)
 	                                 {
-	                                 	return !(i & 1);
+	                                     return !(i & 1);
 	                                 });
 
 	std::cout << "Even numbers = "<< n << std::endl;
@@ -567,7 +567,7 @@ int main()
 {
 	int a[] = {3, 2, 4, 1};
 
-	std::sort(a, &a[4], greater); 
+	std::sort(a, &a[4], greater<int>()); 
 
 	for(int e : a)
 		std::cout << e <<  std::endl;
