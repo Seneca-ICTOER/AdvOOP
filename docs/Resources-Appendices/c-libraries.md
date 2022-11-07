@@ -57,11 +57,11 @@ The conversion specifiers for the integral types in calls to the `scanf()` funct
 Specifier  | Input Value          | Argument     | Default Conversion
 -----------|----------------------|--------------|---------------------------
 `%c`       | `cc...c`             | `char*`      | one or more characters 
-`%d`       | `[-|+]dd...d`        | `int*`       | signed decimal
-`%i`       | `[-|+][0[x]]dd...d`  | `int*`       | signed integer
-`%u`       | `[-|+]dd...d`        | `unsigned*`  | unsigned decimal
-`%o`       | `[-|+]dd...d`        | `unsigned*`  | unsigned octal
-`%x`       | `[-|+][0x]dd...d`    | `unsigned*`  | unsigned hexadecimal
+`%d`       | `[-/+]dd...d`        | `int*`       | signed decimal
+`%i`       | `[-/+][0[x]]dd...d`  | `int*`       | signed integer
+`%u`       | `[-/+]dd...d`        | `unsigned*`  | unsigned decimal
+`%o`       | `[-/+]dd...d`        | `unsigned*`  | unsigned octal
+`%x`       | `[-/+][0x]dd...d`    | `unsigned*`  | unsigned hexadecimal
 
 The size specifiers between the `%` and the conversion letter are:
 
@@ -80,7 +80,7 @@ The conversion specifiers for the floating-point types in calls to the `scanf()`
 
 Specifier               |  Input Value         |  Argument  |  Default Conversion
 ------------------------|----------------------|------------|---------------------
-`%a`, `%f`, `%e`, `%g`  | `[-|+]dd... . ...d`  | `float*`   | signed decimal floating-point
+`%a`, `%f`, `%e`, `%g`  | `[-/+]dd... . ...d`  | `float*`   | signed decimal floating-point
 
 The size specifiers between the `%` and the conversion letter are:
 
@@ -100,11 +100,11 @@ The conversion specifiers for the integral types in calls to the `printf()` func
 Specifier   | Output Value         | Argument     | Default Conversion
 ------------|----------------------|--------------|---------------------------
 `%c`        | `c`                  | `char`       | one character 
-`%d`        | `[-|+]dd...d`        | `int`        | signed decimal
-`%i`        | `[-|+]dd...d`        | `int*`       | signed integer
-`%u`        | `[-|+]dd...d`        | `unsigned*`  | unsigned decimal
+`%d`        | `[-/+]dd...d`        | `int`        | signed decimal
+`%i`        | `[-/+]dd...d`        | `int*`       | signed integer
+`%u`        | `[-/+]dd...d`        | `unsigned*`  | unsigned decimal
 `%o`        | `[0]oo...o`          | `unsigned*`  | unsigned octal
-`%x`, `%X`  | `[0x|0X]hh...h`      | `unsigned*`  | unsigned hexadecimal
+`%x`, `%X`  | `[0x/0X]hh...h`      | `unsigned*`  | unsigned hexadecimal
 
 The size specifiers before the conversion letter are:
 
@@ -125,8 +125,8 @@ The conversion specifiers for the floating-point types in calls to the `printf()
 
 Specifier                     |  Output Value        |  Argument  |  Default Conversion
 ------------------------------|----------------------|------------|--------------------
-`%f`, `%e`, `%E`, `%g`, `%G`  | `[-|+]dd... . ...d`  | `double`   | signed decimal floating point
-`%a`, `%A`                    | `[-|+]dd... . ...d`  | `double`   | signed hexadecimal floating point
+`%f`, `%e`, `%E`, `%g`, `%G`  | `[-/+]dd... . ...d`  | `double`   | signed decimal floating point
+`%a`, `%A`                    | `[-/+]dd... . ...d`  | `double`   | signed hexadecimal floating point
 
 In `%g`, `%G` conversions the `%e`, `%E` conversion applies only if the exponent is less than -4 or greater than or equal to the specified precision.  Otherwise, the `%f` conversion applies. 
 
