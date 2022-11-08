@@ -16,24 +16,24 @@ description: TBD
 
 
 
-The containers of the C++ Standard Template Library (STL) of C++ are designed using linked list technology.  Linked lists are the most common and versatile data structures in computer science. 
+The containers of the C++ Standard Template Library (STL) of C++ are designed using linked list technology.  Linked lists are the most common and versatile data structures in computer science.
 
-This chapter introduces the concept of a linked list and illustrates it with two examples: a stack and a queue.  A stack is a last in first out (LIFO) list, like a stack of plates.  A queue is a first in first out (FIFO) list, like a lineup at a bus stop. 
+This chapter introduces the concept of a linked list and illustrates it with two examples: a stack and a queue.  A stack is a last in first out (LIFO) list, like a stack of plates.  A queue is a first in first out (FIFO) list, like a lineup at a bus stop.
 
 
 
 
 ## The Concept of a Linked List
 
-A linked list is a collection of objects of **identical** type with possibly different lifetimes.  A list implements this flexibility by allocating dynamic memory separately for each object and linking its objects together through pointers to adjacent objects in the list.  The objects are not necessarily stored contiguously in memory. 
+A linked list is a collection of objects of **identical** type with possibly different lifetimes.  A list implements this flexibility by allocating dynamic memory separately for each object and linking its objects together through pointers to adjacent objects in the list.  The objects are not necessarily stored contiguously in memory.
 
-While an array, vector or queue is well suited for managing objects with identical lifetimes, a linked list is significantly more flexible: the list can change its size by discarding and inserting select objects within its interior. 
+While an array, vector or queue is well suited for managing objects with identical lifetimes, a linked list is significantly more flexible: the list can change its size by discarding and inserting select objects within its interior.
 
 
 
 ### A Simple Chain of Objects
 
-The simplest way to build a dynamic chain of objects is to link each object to the next one in the list by address. 
+The simplest way to build a dynamic chain of objects is to link each object to the next one in the list by address.
 
 
 #### Adding Objects
@@ -60,7 +60,7 @@ int main ()
 {
   Element* head = nullptr;
 
-  // Add one element at a time to the head of the chain 
+  // Add one element at a time to the head of the chain
   head = new Element(3, head);
   head = new Element(5, head);
   head = new Element(9, head);
@@ -84,7 +84,7 @@ int main ()
 8 9 5 3
 ```
 
-This list displays its elements naturally from head to tail; that is, in reverse order to that of their addition. 
+This list displays its elements naturally from head to tail; that is, in reverse order to that of their addition.
 
 
 
@@ -111,7 +111,7 @@ int main ()
 {
   Element* head = nullptr;
 
-  // Add one element at a time to the head of the list 
+  // Add one element at a time to the head of the list
   head = new Element(3, head);
   head = new Element(5, head);
   head = new Element(9, head);
@@ -150,9 +150,9 @@ In this design, we can only remove the element at the head.  First, we change th
 
 ### Nodes
 
-A standard linked list uncouples the data structure from the data values themselves.  The structure collects the objects through a system of *nodes*.  Each node refers to a single object and holds at least one pointer to another node.  Accessing a particular object in a list involves starting with the node for a known object and stepping through the list node by node. 
+A standard linked list uncouples the data structure from the data values themselves.  The structure collects the objects through a system of *nodes*.  Each node refers to a single object and holds at least one pointer to another node.  Accessing a particular object in a list involves starting with the node for a known object and stepping through the list node by node.
 
-Referring to the example above, let us uncouple each data value from the pointer to the next element.  We do so by introducing a node for each element.  The node contains the object and at least one pointer to another node.  The object itself only holds the data value stored in the element. 
+Referring to the example above, let us uncouple each data value from the pointer to the next element.  We do so by introducing a node for each element.  The node contains the object and at least one pointer to another node.  The object itself only holds the data value stored in the element.
 
 ![Node](/img/nodes.png)
 
@@ -175,7 +175,7 @@ struct Node
 {
   Data data;
   Node* next;
-  Node (const Data& d, Node* n) : data(d), next(n) {} 
+  Node (const Data& d, Node* n) : data(d), next(n) {}
 };
 
 int main ()
@@ -213,7 +213,7 @@ int main ()
 
 The `Node` constructor passes the data to its `Data` subobject and stores the address of the next node in its pointer member.  Both the `Data` object and the pointer are publicly accessible.
 
-The `Data` object accepts information through its constructor and exposes that information through its `out()` query. 
+The `Data` object accepts information through its constructor and exposes that information through its `out()` query.
 
 
 
@@ -243,7 +243,7 @@ struct Node
 {
   Data data;
   Node* next;
-  Node (const Data& d, Node* n) : data(d), next(n) {} 
+  Node (const Data& d, Node* n) : data(d), next(n) {}
 };
 
 class Stack
@@ -310,11 +310,11 @@ Our `Stack` class completely hides its implementation details from the applicati
 
 ## Queue (optional for OOP345)
 
-A *queue* is a special kind of linked list that adds nodes to the tail and remove nodes from the head.  A queue operates on a first in, first out principle (FIFO). 
+A *queue* is a special kind of linked list that adds nodes to the tail and remove nodes from the head.  A queue operates on a first in, first out principle (FIFO).
 
 ![Queue](/img/queue.png)
 
-Let us redesign our Nodes example in the form of a `Queue` class.  Our `Queue` object adds a node to its head through a `push()` member function and removes a node from its tail through a `pop()` member function. 
+Let us redesign our Nodes example in the form of a `Queue` class.  Our `Queue` object adds a node to its head through a `push()` member function and removes a node from its tail through a `pop()` member function.
 
 ```cpp
 // Linked Lists - Queue
@@ -334,7 +334,7 @@ struct Node
 {
   Data data;
   Node* next;
-  Node (const Data& d, Node* n) : data(d), next(n) {} 
+  Node (const Data& d, Node* n) : data(d), next(n) {}
 };
 
 class Queue
