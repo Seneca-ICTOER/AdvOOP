@@ -108,7 +108,7 @@ Precedence | Class    | Operator                          | Description         
   18       | binary   |  `::`                             | scope resolution                          |
   17       | postfix  |  `[]`                             | array subscripting                        | left-to-right
   17       | postfix  |  `( )`                            | function call                             | left-to-right
-  17       | postfix  |  `.`                              | direct selection	                      | left-to-right
+  17       | postfix  |  `.`                              | direct selection                          | left-to-right
   17       | postfix  |  `->`                             | indirect selection                        | left-to-right
   17       | postfix  |  `++` `--`                        | postfix increment, decrement              | left-to-right
   17       | postfix  |  `typeid()`                       | type name                                 | left-to-right
