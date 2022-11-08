@@ -268,7 +268,7 @@ These objects specify the operation to be performed by an algorithm and can be p
 ## Algorithm Library
 
 
-The `algorithm` function templates perform common operations on ranges of elements in a sequence.  The function calls accept these ranges as arguments in the form of iterators.  These functions apply, not only to containers, but also to strings and built-in arrays.  Thy do not change the size or storage allocation of any sequence. 
+The `algorithm` function templates perform common operations on ranges of elements in a sequence.  The function calls accept these ranges as arguments in the form of iterators.  These functions apply, not only to containers, but also to strings and built-in arrays.  They do not change the size or storage allocation of any sequence. 
 
 The function templates are defined in header `<algorithm>`. The templates consist of:
 
