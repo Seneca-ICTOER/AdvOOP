@@ -77,11 +77,12 @@ The definitions for the `Cube` and `LitObj` types are:
 
 #include "Shape.h"
 
-class Cube : public Shape {
-double len;
+class Cube : public Shape
+{
+  double len;
 public:
-Cube(double);
-double volume() const;
+  Cube(double);
+  double volume() const;
 };
 ```
 

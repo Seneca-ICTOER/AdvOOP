@@ -649,4 +649,5 @@ Note that the address of the storage location for `k` is different for each thre
 
 ## Exercises
 
+- Read *CPP Reference* on [RAII](https://en.cppreference.com/w/cpp/language/raii)
 - Read Wikipedia on [Threads](https://en.wikipedia.org/wiki/Stream_%28computing%29)
