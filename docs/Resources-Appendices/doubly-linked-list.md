@@ -18,7 +18,7 @@ description: TBD
 
 A **doubly linked** list admits traversal from tail to head as well as from head to tail.  It is not restricted to either front-end or back-end addition or removal.  We may insert a node before or after any other node and remove any node in the list.  This kind of list has a more complicated structure than a stack or a queue. 
 
-![Doubly Linked List](/images/doubly.png)
+![Doubly Linked List](/img/doubly.png)
 
 Consider the following example,
 

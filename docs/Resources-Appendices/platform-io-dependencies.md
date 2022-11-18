@@ -22,7 +22,7 @@ Some of the libraries outside the language standard cross language boundaries.  
 
 We divide applications that use non-standard libraries into two parts as illustrated below: a fully portable top layer of platform-independent modules and a platform-dependent interface module.  The platform-dependent module interfaces with the non-standard library that shipped with the host platform.  The interface module consists of two files: a fully portable header file and a platform-dependent implementation file.  The fully portable top layer of the application refers only to this header file and the implementation file contains all of the references to the non-standard C library. 
 
-![Console Module](/images/console.png)
+![Console Module](/img/console.png)
 
 We install our interface module separately from the top layer of each application.  When we compile an application that uses our module, we link its binary files with the previously compiled binary files for our interface module and its lower-level, non-standard library. 
 
@@ -203,7 +203,7 @@ The `cio` user-interface library below provides direct terminal access facilitie
 
 The console module consists of two files: the fully portable header file (`console.h`) and the platform-dependent implementation file (`console.cpp`) as illustrated below.  The implementation file contains all of the platform-dependent code. 
 
-![Console Library](/images/library.png)
+![Console Library](/img/library.png)
 
 The application code and the `console.h` header file do not change from platform to platform.  It is only the implementation file (`console.cpp`) that changes. 
 
@@ -214,7 +214,7 @@ The `Console` class provides complete access to lower-level direct terminal cont
 
 We refer to a position on the screen in terms of `x` and `y` coordinates.  The origin is at the top-left corner, the `x` (column) axis is directed to the left and the `y` (row) axis is directed downwards.
 
-![Screen Coordinates](/images/coordinates.png)
+![Screen Coordinates](/img/coordinates.png)
 
 The `console.h` header file contains the class definition, the prototypes for its helper operators, and an external declaration of the console object, all within the `cio` namespace:
 

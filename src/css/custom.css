@@ -68,3 +68,9 @@ table {
 .theme-edit-this-page {
   visibility: hidden;
 }
+
+#ThisIsATest
+{
+	display: block;
+	color: #ff0000;
+}
