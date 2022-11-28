@@ -26,3 +26,9 @@ publish.bat
 
 # intellij configs
 .idea
+
+# Visual Studio Code configs
+.vscode
+
+# Husky config???
+.husky
