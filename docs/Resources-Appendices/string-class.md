@@ -7,21 +7,15 @@ description: TBD
 
 # String Class
 
-
 - Describe the string class and its member functions
 
 > "Use vector and string instead of arrays." Sutter, Alexandruscu (2005)
 
-
-
-The C++ Standard Library defines the `string` class as the object-oriented alternative to null-terminated character strings of the C language.  The member functions of this class that are specialized for direct operations on strings. 
-
-
+The C++ Standard Library defines the `string` class as the object-oriented alternative to null-terminated character strings of the C language. The member functions of this class that are specialized for direct operations on strings.
 
 ## Class Definition
 
-The `string` class is defined within the `std` namespace.  The `<string>` header file contains the class definition.
-
+The `string` class is defined within the `std` namespace. The `<string>` header file contains the class definition.
 
 ### Constructors
 
@@ -34,6 +28,7 @@ The constructors of the `string` class can initialize an object using:
 5. a sequence of characters
 
 That is,
+
 ```cpp
 string a = "Hello";           // a C-style string
 string b("Good Bye", 4);      // the 1st 4 characters of C-style string
@@ -41,8 +36,6 @@ string c = a;                 // another string object
 string d(b, 5, 3);            // "Bye" - a substring of a string object
 string e(a.begin(), a.end()); // a sequence of characters
 ```
-
-
 
 ### Member Functions and Operations
 
@@ -71,7 +64,6 @@ Member functions and operations of the string class include:
 
 `npos` is a class member constant with the greatest possible value for position within the string (`unsigned(-1)`).
 
-
 #### Example
 
 ```cpp
@@ -89,15 +81,13 @@ int main()
   str += '!';
 
   str[5] = 'D';
-  std::cout << str.length() << ' ' << str.c_str() << std::endl; 
+  std::cout << str.length() << ' ' << str.c_str() << std::endl;
 }
 ```
 
 ```
-9 Good Day! 
+9 Good Day!
 ```
-
-
 
 ### Helper Functions
 
@@ -108,8 +98,6 @@ Helper functions for the string class include:
 - `istream& operator>>(istream& is, string& s)` - extracts `s` from `is` and returns a reference to `is`
 - `ostream& operator<<(ostream& os, const string& s)` - inserts `s` into `os` and returns a reference to `os`
 
-
-
 ## STL Related Notes
 
-The `string` class is the default instantiation of the `basic_string` class template.  The `basic_string` class template is similar to the `vector` class template.  The `string` class provides iterators and can be used with the standard algorithms of the standard template library.  Pointer/array equivalence does not hold: if `s` is an instance of the `string` class, then `&s[0]` is not the same as `s`.
+The `string` class is the default instantiation of the `basic_string` class template. The `basic_string` class template is similar to the `vector` class template. The `string` class provides iterators and can be used with the standard algorithms of the standard template library. Pointer/array equivalence does not hold: if `s` is an instance of the `string` class, then `&s[0]` is not the same as `s`.

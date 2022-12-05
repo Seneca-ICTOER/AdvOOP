@@ -12,24 +12,17 @@ description: TBD
 
 > "Prefer composition to inheritance" Sutter, Alexandruscu (2005)
 
+The relationships between classes in object-oriented applications, aside from inheritance and parametric polymorphism, exhibit different degrees of ownership. These relationships include compositions, aggregations and associations. Each relationship reflects a different degree of coupling between classes. A composition is a strong relationship: the composer object owns the component object: one class completely contains another class and determines its lifetime. An aggregation is a weaker relationship: the aggregator has an instance of another class, which determines its own lifetime. An association is the weakest relationship of the three: one class accesses or uses another class: neither class exhibit a 'has a' relationship to the other class.
 
-
-
-
-The relationships between classes in object-oriented applications, aside from inheritance and parametric polymorphism, exhibit different degrees of ownership.  These relationships include compositions, aggregations and associations.  Each relationship reflects a different degree of coupling between classes.  A composition is a strong relationship: the composer object owns the component object: one class completely contains another class and determines its lifetime.  An aggregation is a weaker relationship: the aggregator has an instance of another class, which determines its own lifetime.  An association is the weakest relationship of the three: one class accesses or uses another class: neither class exhibit a 'has a' relationship to the other class. 
-
-These relationships appear in all three forms in the case of class with resources.  If a class with a resource is responsible for copying and destroying its resource, then that class is a composition.  If the class is not responsible for copying or destroying its resource, then that class is an aggregation or an association. 
+These relationships appear in all three forms in the case of class with resources. If a class with a resource is responsible for copying and destroying its resource, then that class is a composition. If the class is not responsible for copying or destroying its resource, then that class is an aggregation or an association.
 
 This chapter presents examples of each of these three relationships.
 
-
-
 ## Compositions
 
+A composition is a **has-a** relationship between classes. It implements complete ownership. The composer object is responsible for destroying its component object(s) at or before its own destruction. A composition is incomplete without its components.
 
-A composition is a **has-a** relationship between classes.  It implements complete ownership.  The composer object is responsible for destroying its component object(s) at or before its own destruction.  A composition is incomplete without its components. 
-
-Design-wise, composition is more flexible (less coupled) than inheritance.  Updates to the component class need not affect the composer class.  However, member functions added to the component class require forwarding member functions in the composer class. 
+Design-wise, composition is more flexible (less coupled) than inheritance. Updates to the component class need not affect the composer class. However, member functions added to the component class require forwarding member functions in the composer class.
 
 Consider the relationship between a `Person` class and a `Name` class illustrated below: every person has a name.
 
@@ -48,7 +41,7 @@ public:
 	Name(const char*);
 	Name(const Name&);
 
-	Name& operator=(const Name&); 
+	Name& operator=(const Name&);
 	~Name();
 
 	const char* get() const;
@@ -149,7 +142,7 @@ public:
 };
 ```
 
-The implementation files for both versions are listed below.  The `Name` object does not exist apart from the `Person` object.  In the subobject version, the default copying and assignment rules apply: the default copy constructor, assignment operator and destructor are sufficient.  In the pointer version, deep copying and assignment are required and we must code the copy constructor, assignment operator and destructor.  The `Person` constructor creates the `Name` object, the assignment operator destroys the old `Name` object and creates a new one, and the destructor destroys the `Name` object.
+The implementation files for both versions are listed below. The `Name` object does not exist apart from the `Person` object. In the subobject version, the default copying and assignment rules apply: the default copy constructor, assignment operator and destructor are sufficient. In the pointer version, deep copying and assignment are required and we must code the copy constructor, assignment operator and destructor. The `Person` constructor creates the `Name` object, the assignment operator destroys the old `Name` object and creates a new one, and the destructor destroys the `Name` object.
 
 ```cpp
 // Composition - SubObject Version
@@ -188,7 +181,7 @@ Person::Person(const Person& src)
 }
 
 Person& Person::operator=(const Person& src)
-{ 
+{
 	if (this != &src)
 	{
 		delete name;
@@ -236,7 +229,9 @@ int main()
 	p.display();
 }
 ```
+
 produces the output below for both versions of the `Person` type:
+
 ```
 23 Harvey
 23 Harvey
@@ -247,18 +242,15 @@ produces the output below for both versions of the `Person` type:
 23 Lawrence
 ```
 
-Note that this program is unaware of the implementation of the composition relationship.  It makes no reference to the types of subobjects contained in the `Person` type.  Changes to these objects and the descriptions of their type(s) are completely hidden within the `Person` type.
-
-
+Note that this program is unaware of the implementation of the composition relationship. It makes no reference to the types of subobjects contained in the `Person` type. Changes to these objects and the descriptions of their type(s) are completely hidden within the `Person` type.
 
 ## Aggregations
 
+An aggregation is a composition that does not manage the creation or destruction of the objects that it _uses_. The responsibility for creating and destroying the objects lies outside the aggregator type. The aggregator is complete whether or not any of the objects that it uses exist. The objects used survive the destruction of the aggregator.
 
-An aggregation is a composition that does not manage the creation or destruction of the objects that it *uses*.  The responsibility for creating and destroying the objects lies outside the aggregator type.  The aggregator is complete whether or not any of the objects that it uses exist.  The objects used survive the destruction of the aggregator. 
+Design-wise, aggregation is more flexible (less coupled) than composition. Updates to any aggregatee type do not interfere with the design of the aggregator type. Member functions added to the aggregatee type do not require forwarding member functions in the aggregator type.
 
-Design-wise, aggregation is more flexible (less coupled) than composition.  Updates to any aggregatee type do not interfere with the design of the aggregator type.  Member functions added to the aggregatee type do not require forwarding member functions in the aggregator type. 
-
-Consider the relationship between a club and its members.  The relationship is between the club and the names of its members as illustrated below.  The club has or may have members, but can exist without any.  A member's name can be removed from its list of members before the club is disbanded and that name is not destroyed if the club is disbanded. 
+Consider the relationship between a club and its members. The relationship is between the club and the names of its members as illustrated below. The club has or may have members, but can exist without any. A member's name can be removed from its list of members before the club is disbanded and that name is not destroyed if the club is disbanded.
 
 ![Aggregation](/img/aggregation.svg)
 
@@ -277,7 +269,7 @@ class Club
 	const Name* name[M]{};
 	int m { 0 };
 public:
-	Club& operator+=(const Name&); 
+	Club& operator+=(const Name&);
 	Club& operator-=(const Name&);
 	void display() const;
 	//...
@@ -373,16 +365,13 @@ Frank
 
 Note how the application creates the `Name` objects separately from the `Club` and destroys them separately.
 
-
-
 ## Associations
 
+An association is a service relationship. It does not involve any ownership of one type by another. Each type is independent and complete without the related type.
 
-An association is a service relationship.  It does not involve any ownership of one type by another.  Each type is independent and complete without the related type. 
+Association is the least coupled relationship between classes. Member functions in an association do not require forwarding member functions in the related type.
 
-Association is the least coupled relationship between classes.  Member functions in an association do not require forwarding member functions in the related type. 
-
-Consider the relationship between a course and a room in a college.  The course uses the room and the room is booked for the course for a certain period.  , but both exist independently of one another.  A room can be booked for a course and a course can be assigned to a room.  Neither is destroyed when the other is destroyed.
+Consider the relationship between a course and a room in a college. The course uses the room and the room is booked for the course for a certain period. , but both exist independently of one another. A room can be booked for a course and a course can be assigned to a room. Neither is destroyed when the other is destroyed.
 
 ![Association](/img/association.svg)
 
@@ -402,7 +391,7 @@ class Course
 	Room* room { nullptr };
 
 public:
-	Course(const char*, int); 
+	Course(const char*, int);
 
 	void book(Room&);
 	void release();
@@ -459,7 +448,7 @@ class Course;
 class Room
 {
 	Name name;
-	Course* course { nullptr }; 
+	Course* course { nullptr };
 
 public:
 	Room(const char*);
@@ -500,7 +489,7 @@ const char* Room::get() const
 void Room::display() const
 {
 	std::cout << name.get() << ' '
-	          << (course ? course->get() : "available") 
+	          << (course ? course->get() : "available")
 	          << std::endl;
 }
 //...
@@ -526,7 +515,7 @@ int main()
 	Room t2109("T2109");
 	Room t2110("T2110");
 
-	Course btp105("Intro to Programming", 105); 
+	Course btp105("Intro to Programming", 105);
 	Course btp205("Intro to O-O Prg", 205);
 	Course btp305("O-O Programming", 305);
 
@@ -563,7 +552,7 @@ int main()
 ```
 
 ```
-***** 105 Intro to Programming 
+***** 105 Intro to Programming
 ***** 205 Intro to O-O Prg
 ***** 305 O-O Programming
 T2108 available
@@ -586,8 +575,6 @@ T2108 Intro to O-O Programming
 T2109 O-O Programming
 T2110 available
 ```
-
-
 
 ## Exercises
 

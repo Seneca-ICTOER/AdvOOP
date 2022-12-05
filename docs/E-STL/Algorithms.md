@@ -13,45 +13,32 @@ description: TBD
 
 > "By default, ... prefer algorithms to loops." Stroustrup (2014)
 
-
-
-
-
-The algorithms category of the C++ STL provides a variety of common programming solutions that operate on ranges of elements within containers.  These algorithms are expressed in the form of functions within the `std` namespace and are usable with our own collections of types as well as with the STL containers.  Most algorithms include overloads that accept execution policies.  The three libraries in this category are:
+The algorithms category of the C++ STL provides a variety of common programming solutions that operate on ranges of elements within containers. These algorithms are expressed in the form of functions within the `std` namespace and are usable with our own collections of types as well as with the STL containers. Most algorithms include overloads that accept execution policies. The three libraries in this category are:
 
 - `functional` - standard function objects
 - `algorithm` - standard algorithms
 - `numeric` - standard numeric operations
 
-Each library is independent of any other library. 
+Each library is independent of any other library.
 
-This chapter introduces each library of the algorithms category in turn and describes some commonly used features.  This introduction includes descriptions of selected functions with examples.  <!-- MISSING For fuller details, see the online references cited in the [tutorials section](/resources/tutorials.html) of the course web site.-->
-
-
+This chapter introduces each library of the algorithms category in turn and describes some commonly used features. This introduction includes descriptions of selected functions with examples. <!-- MISSING For fuller details, see the online references cited in the [tutorials section](/resources/tutorials.html) of the course web site.-->
 
 ## Functional Library
 
-
-The functional library defines templated function-objects that can be passed as arguments to other functions, including the algorithm templates.  This library is defined in the header file `<functional>` and consists of three distinct parts:
+The functional library defines templated function-objects that can be passed as arguments to other functions, including the algorithm templates. This library is defined in the header file `<functional>` and consists of three distinct parts:
 
 - Wrapper Class Templates
 - Function Templates
 - Operator Classes
 
-
-
 ### Wrapper Class Templates
 
-
-The wrapper class templates are templates that manage access to some underlying object.  These templates include:
+The wrapper class templates are templates that manage access to some underlying object. These templates include:
 
 - `function` - creates a function-object wrapper for a function, another function-object or a lambda expression
 - `reference_wrapper` - creates a reference object
 
-
-
 #### `std::function` Wrapper Template
-
 
 The program below creates 3 function objects: one for the function `multiply()`, one for the functor `Multiply`, and one for a lambda expression that performs a multiply operation.
 
@@ -75,7 +62,7 @@ int main()
 {
 	std::function<long(long, long)> f1 = multiply;
 	std::function<long(long, long)> f2 = Multiply();
-	std::function<long(long, long)> f3 = [](long x, long y) 
+	std::function<long(long, long)> f3 = [](long x, long y)
 	                                     {
 	                                     	return x * y;
 	                                     };
@@ -87,21 +74,18 @@ int main()
 ```
 
 ```
-f1(10, 2) = 20 
+f1(10, 2) = 20
 f2(10, 2) = 20
 f3(10, 2) = 20
 ```
 
-
-
 #### `reference_wrapper` Template
 
-
-The `reference_wrapper` template creates a class that facilitates the copying and assigning of references for functions as well as objects.  This template allows utilization of references where the C++ standard forbid normal references (for example, in container classes). 
+The `reference_wrapper` template creates a class that facilitates the copying and assigning of references for functions as well as objects. This template allows utilization of references where the C++ standard forbid normal references (for example, in container classes).
 
 A reference wrapper facilitates the storage of references inside container objects.
 
-The program below creates a `vector` of `double` objects and a parallel vector of references to those double objects.  It multiplies the values in the original vector by 3 and displays the values referred to by the reference wrapper:
+The program below creates a `vector` of `double` objects and a parallel vector of references to those double objects. It multiplies the values in the original vector by 3 and displays the values referred to by the reference wrapper:
 
 ```cpp
 // Functional - reference wrapper
@@ -121,7 +105,7 @@ int main()
 
 	for (auto e : references)
 		std::cout << e << " ";
-	std::cout << std::endl; 
+	std::cout << std::endl;
 }
 ```
 
@@ -150,22 +134,19 @@ int main()
 
 	v1 = 10L, v2 = 20L, v3 = 30L;
 
-	std::cout << "r1 = " << r1 << std::endl; 
+	std::cout << "r1 = " << r1 << std::endl;
 	std::cout << "r2 = " << r2 << std::endl;
 	std::cout << "r3 = " << r3 << std::endl;
 }
 ```
 
 ```
-r1 = 10 
+r1 = 10
 r2 = 20
 r3 = 30
 ```
 
-
-
 ### Function Templates
-
 
 The function templates include:
 
@@ -173,12 +154,9 @@ The function templates include:
 - `reference_wrapper<T> ref(T& t)` - creates a reference wrapper on object `t` of type `T`
 - `reference_wrapper<const T> cref(const T& t)` - creates a reference wrapper on unmodifiable object `t` of type `T`
 
-
-
 #### `bind`
 
-
-The program below binds the function `multiply()` to its arguments and returns the corresponding function object.  When we call the function object, it returns the result for the specified arguments:
+The program below binds the function `multiply()` to its arguments and returns the corresponding function object. When we call the function object, it returns the result for the specified arguments:
 
 ```cpp
 // Functional - bind a function to its arguments
@@ -187,7 +165,7 @@ The program below binds the function `multiply()` to its arguments and returns t
 #include <iostream>
 #include <functional>
 
-double multiply(double x, double y) { return x * y; } 
+double multiply(double x, double y) { return x * y; }
 
 int main()
 {
@@ -197,14 +175,12 @@ int main()
 ```
 
 ```
-Product = 30 
+Product = 30
 ```
 
 `std::bind` stores the arguments passed in by copying their values.
 
-
 #### `ref`
-
 
 The function template `std::ref()` returns an `std::reference_wrapper` instance for the argument supplied.
 
@@ -223,7 +199,7 @@ int main()
 {
 	int a = 10, b = 20;
 	auto inc = bind(increment, std::ref(a), b);
-	
+
 	inc();
 
 	std::cout << "a = " << a << std::endl;
@@ -236,12 +212,9 @@ a = 11
 b = 20
 ```
 
-
-
 ### Operator Class Templates
 
-
-The operator class templates define function object equivalents for most of the operators present in the core language.  The templates include:
+The operator class templates define function object equivalents for most of the operators present in the core language. The templates include:
 
 - `bit_and` - result of `x & y`
 - `bit_or` - result of `x | y`
@@ -262,13 +235,9 @@ The operator class templates define function object equivalents for most of the 
 
 These objects specify the operation to be performed by an algorithm and can be passed to an algorithm in place of a lambda expression or full-blown function object.
 
-
-
-
 ## Algorithm Library
 
-
-The `algorithm` function templates perform common operations on ranges of elements in a sequence.  The function calls accept these ranges as arguments in the form of iterators.  These functions apply, not only to containers, but also to strings and built-in arrays.  They do not change the size or storage allocation of any sequence. 
+The `algorithm` function templates perform common operations on ranges of elements in a sequence. The function calls accept these ranges as arguments in the form of iterators. These functions apply, not only to containers, but also to strings and built-in arrays. They do not change the size or storage allocation of any sequence.
 
 The function templates are defined in header `<algorithm>`. The templates consist of:
 
@@ -279,22 +248,19 @@ The function templates are defined in header `<algorithm>`. The templates consis
 The template parameter types include:
 
 - Iterators from one of the six categories that define the operations to be performed:
-	- `InputIterator` - an input iterator type (supported operations: `!=`, `*`, `->`, `++`, `*i++`)
-	- `OutputIterator` - an output iterator type (supported operations: write and `++`, `*i++`)
-	- `ForwardIterator` - an output iterator type (supported operations: `!=`, `*`, `->`, `++`, `*i++`)
-	- `BiDirectionalIterator` - an output iterator type (supported operations: `!=`, `*`, `->`, `++`, `*i++`, `--`)
-	- `RandomAccessIterator` - a random access iterator type (supported operations: `!=`, `*`, `->`, `++`, `*i++`, `--`, `*i--`, `+`, `i`, `i[n]`, `<`, `>`, `<=`, `>=`)
-	- `ContiguousIterator` - an output iterator type (supported operations: `!=`, `*`, `->`, `++`, `*i++`, `--`, `*i--`, `+`, `i`, `i[n]`, `<`, `>`, `<=`, `>=`, contiguous storage)
+  - `InputIterator` - an input iterator type (supported operations: `!=`, `*`, `->`, `++`, `*i++`)
+  - `OutputIterator` - an output iterator type (supported operations: write and `++`, `*i++`)
+  - `ForwardIterator` - an output iterator type (supported operations: `!=`, `*`, `->`, `++`, `*i++`)
+  - `BiDirectionalIterator` - an output iterator type (supported operations: `!=`, `*`, `->`, `++`, `*i++`, `--`)
+  - `RandomAccessIterator` - a random access iterator type (supported operations: `!=`, `*`, `->`, `++`, `*i++`, `--`, `*i--`, `+`, `i`, `i[n]`, `<`, `>`, `<=`, `>=`)
+  - `ContiguousIterator` - an output iterator type (supported operations: `!=`, `*`, `->`, `++`, `*i++`, `--`, `*i--`, `+`, `i`, `i[n]`, `<`, `>`, `<=`, `>=`, contiguous storage)
 - `Fn` - a function object type
 
 The notation `[f, l)` refers to the range starting at the position identified by iterator `f` and extending to the position immediately before that identified by iterator `l`.
 
 The admissible operations defined on each type of iterator may be found at [cppreference.com](http://en.cppreference.com/w/cpp/iterator).
 
-
-
 ### Queries
-
 
 The query class templates include:
 
@@ -308,10 +274,7 @@ The query class templates include:
 - `int count(InputIterator f, InputIterator l, const T& t)` - count the occurrences of `t` within range `[f, l)`
 - `int count_if(InputIterator f, InputIterator l, Fn predicate)` - count how many elements within range `[f, l)` satisfy predicate
 
-
-
 #### `count`
-
 
 The program below counts the number of occurrences of the value `12` in array `a`:
 
@@ -337,7 +300,6 @@ int main()
 12 occurs 3 times.
 ```
 
-
 #### `count_if`
 
 The program below counts how many even numbers exist in the array `a`:
@@ -351,8 +313,8 @@ The program below counts how many even numbers exist in the array `a`:
 
 int main()
 {
-	int a[] = {1, 2, 4, 5, 8, 9, 12, 13, 16, 18, 22}; 
-	
+	int a[] = {1, 2, 4, 5, 8, 9, 12, 13, 16, 18, 22};
+
 	int n = std::count_if(a, a + 11, [](int i)
 	                                 {
 	                                     return !(i & 1);
@@ -366,10 +328,7 @@ int main()
 Even numbers = 7
 ```
 
-
-
 ### Modifiers
-
 
 The modifier class templates include:
 
@@ -382,10 +341,7 @@ The modifier class templates include:
 - `void replace(ForwardIterator f, ForwardIterator l, const T& s, const T& t)` - replace every occurrence of `s` with `t` for all of the elements within range `[f, l)`
 - `void replace_if(ForwardIterator f, ForwardIterator l, Fn predicate, const T& t)` - replace every element that satisfies predicate with `t` for all of the elements within range `[f, l)`
 
-
-
 #### `copy`
-
 
 The program below copies the first 2 elements of vector `v` into vector `c`, starting at the second element of vector `c` and displays the updated contents of vector `c`:
 
@@ -405,18 +361,16 @@ int main()
 	std::copy(v.begin(), v.begin() + 2, c.begin() + 1);
 
 	for (auto e : c)
-		std::cout << e << std::endl; 
+		std::cout << e << std::endl;
 }
 ```
 
 ```
-20.68 
+20.68
 10.34
 10.34
 20.68
 ```
-
-
 
 #### `copy_if`
 
@@ -432,7 +386,7 @@ The program below copies from the first 10 elements of vector `v` those elements
 
 int main()
 {
-	std::vector<int> v = {1, 2, 4, 5, 7, 8, 10, 13, 17, 21, 43}; 
+	std::vector<int> v = {1, 2, 4, 5, 7, 8, 10, 13, 17, 21, 43};
 	std::vector<int> c(15);
 
 	std::copy_if(v.begin(), v.begin() + 10, c.begin(), [](int i) -> bool
@@ -441,7 +395,7 @@ int main()
 		});
 
 	for (auto e : c)
-		std::cout << e << std::endl; 
+		std::cout << e << std::endl;
 }
 ```
 
@@ -451,15 +405,12 @@ int main()
 7
 13
 17
-21 
+21
 ```
-
-
 
 #### `transform`
 
-
-The `transform` function templates perform programmer-specified transformations on the elements of a sequence.  A function object defines the transformation.
+The `transform` function templates perform programmer-specified transformations on the elements of a sequence. A function object defines the transformation.
 
 The program below multiplies each element in vector `v` by 3, stores the result in vector `c` and displays the contents of vector `c`:
 
@@ -473,7 +424,7 @@ The program below multiplies each element in vector `v` by 3, stores the result 
 
 int main()
 {
-	std::vector<int> v = {1, 2, 4, 5, 7, 8, 10, 13, 17, 21, 43}; 
+	std::vector<int> v = {1, 2, 4, 5, 7, 8, 10, 13, 17, 21, 43};
 	std::vector<int> c(11);
 
 	std::transform(v.begin(), v.end(), c.begin(), [](int i)
@@ -497,7 +448,7 @@ int main()
 39
 51
 63
-129 
+129
 ```
 
 The program below adds each element in vector `a` to the corresponding element in vector `b`, stores the results in vector `c` and displays the contents of vector `c`:
@@ -513,14 +464,14 @@ The program below adds each element in vector `a` to the corresponding element i
 
 int main()
 {
-	std::vector<int> a = {1, 2, 4, 5, 7, 8, 10, 13, 17, 21, 43}; 
-	std::vector<int> b = {2, 1, 0, 1, 2, 3, 16, 23, 21, 17, 32}; 
+	std::vector<int> a = {1, 2, 4, 5, 7, 8, 10, 13, 17, 21, 43};
+	std::vector<int> b = {2, 1, 0, 1, 2, 3, 16, 23, 21, 17, 32};
 	std::vector<int> c(11);
 
 	std::transform(a.begin(), a.end(), b.begin(), c.begin(), std::plus<int>());
 
 	for (auto e : c)
-		std::cout << e << std::endl; 
+		std::cout << e << std::endl;
 }
 ```
 
@@ -535,10 +486,8 @@ int main()
 36
 38
 38
-75 
+75
 ```
-
-
 
 ### Manipulators
 
@@ -548,8 +497,6 @@ The manipulator class templates include:
 - `void sort(RandomAccessIterator f, RandomAccessIterator l, Fn compare)` - sorts the elements using `compare` as the comparator
 - `OutputIterator merge(InputIterator f1, InputIterator l1, InputIterator f2, InputIterator l2, OutputIterator o)` - combine elements in sorted ranges `[f1, l1)` and `[f2, l2)` and store the merged results in `o` in ascending order
 - `OutputIterator merge(InputIterator f1, InputIterator l1, InputIterator f2, InputIterator l2, OutputIterator o, Fn compare)` - combine elements in sorted ranges `[f1, l1)` and `[f2, l2)` and store the merged results in `o` using the comparator `compare`
-
-
 
 #### `sort`
 
@@ -567,7 +514,7 @@ int main()
 {
 	int a[] = {3, 2, 4, 1};
 
-	std::sort(a, &a[4], greater<int>()); 
+	std::sort(a, &a[4], greater<int>());
 
 	for(int e : a)
 		std::cout << e <<  std::endl;
@@ -578,15 +525,12 @@ int main()
 4
 3
 2
-1 
+1
 ```
-
-
 
 ## Numeric Library
 
-
-The numeric library provides standard templated functions for performing numeric operations on ranges of elements in a sequence. 
+The numeric library provides standard templated functions for performing numeric operations on ranges of elements in a sequence.
 
 The numeric function templates include:
 
@@ -596,8 +540,6 @@ The numeric function templates include:
 - `T inner_product(InputIterator f1, InputIterator l1, InputIterator f2, T init, Fn boper1, Fn boper2)` - accumulate the results of binary operation `boper2` on each pair in the ranges `[f1, l1)` and `[f2, ...)` to `init` using binary operation `boper1` and return the result
 - `OutputIterator partial_sum(InputIterator f1, InputIterator l1, OutputIterator partialSum)` - calculate the partial sums for vector `v` and store them in collection starting at `partialSum`
 - `OutputIterator partial_sum(InputIterator f1, InputIterator l1, OutputIterator partialSum, Fn boper)` - calculate the partial expressions for vector `v` using binary operation `boper` and store them in the collection starting at `partialSum`
-
-
 
 ### Examples
 
@@ -617,15 +559,15 @@ int main()
 	int a[] = {3, 2, 4, 1}, s;
 
 	s = std::accumulate(a, &a[4], (int)0);
-	
+
 	std::cout << "sum = " << s <<  std::endl;
-	
+
 	s = std::accumulate(a, &a[4], (int)0, [](int x, int y)
 		{
 			return x + 2 * y;
 		});
 
-	std::cout << "2 * sum = " << s <<  std::endl; 
+	std::cout << "2 * sum = " << s <<  std::endl;
 }
 ```
 
@@ -634,10 +576,7 @@ sum = 10
 2 * sum = 20
 ```
 
-
-
 #### `inner_product`
-
 
 The program below calculate the inner or dot product of array `a` with array `b`, displays the result, then calculates the sum of the squares of the differences between the elements of the arrays and displays that result:
 
@@ -657,12 +596,12 @@ int main()
 
 	s = std::inner_product(a, &a[4], b, (int)0);
 
-	std::cout << "dot product = " << s <<  std::endl; 
+	std::cout << "dot product = " << s <<  std::endl;
 
 	s = std::inner_product(a, &a[4], b, (int)0, std::plus<int>(),
-		                   [](int x, int y) { return (x - y) * (x - y); }); 
+		                   [](int x, int y) { return (x - y) * (x - y); });
 
-	std::cout << "sum of (a[i] - b[i]) ^ 2 = " << s <<  std::endl; 
+	std::cout << "sum of (a[i] - b[i]) ^ 2 = " << s <<  std::endl;
 }
 ```
 
@@ -671,10 +610,7 @@ dot product = 23
 sum of (a[i] - b[i]) ^ 2 = 14
 ```
 
-
-
 #### `partial_sum`
-
 
 The program below calculates the partial sums of the elements in vector `v`, displays them, then calculates their partial products and displays them:
 
@@ -691,7 +627,7 @@ int main()
 {
 	std::vector<int> v = {1, 2, 3, 4}, p(4);
 
-	std::partial_sum(v.begin(), v.end(), p.begin()); 
+	std::partial_sum(v.begin(), v.end(), p.begin());
 
 	for (auto i : p)
 		std::cout << i << std::endl;
@@ -713,10 +649,8 @@ int main()
 1
 2
 6
-24 
+24
 ```
-
-
 
 ## Exercises
 
