@@ -85,7 +85,7 @@ A `short int`, or simply a `short`, occupies at least as much memory as a `signe
 
 ![signed int](/img/type_sint.png)
 
-C++ does not support syntax for constants of `short int` type.
+C++ does not support syntax for constant literals of `short int` type (i.e., integer literals on 2 bytes).
 
 #### `int`
 
