@@ -342,7 +342,7 @@ or
 Under IEEE 754, the following formula determines the value stored
 
 $$
-value = (-1)^s × 2^e × { 1 + f_1 × 2^{-1} + f_2 × 2^{-2} + ... + f_23 × 2^{-23} }
+value = (-1)^s × 2^e × { 1 + f_1 × 2^{-1} + f_2 × 2^{-2} + ... + f_{23} × 2^{-23} }
 $$
 
 where $f_i$ is the value of bit $i$ ($i = 1, 2, ..., 23$) of the mantissa and $e$ is the exponent, which has a value between -127 and 128 inclusive.
