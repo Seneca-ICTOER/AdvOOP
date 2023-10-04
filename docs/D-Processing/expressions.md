@@ -945,8 +945,9 @@ x = x + x;  // increment first = 8
 
 ```cpp
 int x = 3, y;
-y = ++x;
-x = x + y;  // add first = 7
+y = x;
+++x;
+x = y + x;  // add first = 7
 ```
 
 ## Ternary Expression
