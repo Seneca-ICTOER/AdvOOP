@@ -947,7 +947,7 @@ x = x + x;  // increment first = 8
 int x = 3, y;
 y = x;
 ++x;
-x = y + x;  // add first = 7
+x = y + x;  // add using the old value of x = 7
 ```
 
 ## Ternary Expression
