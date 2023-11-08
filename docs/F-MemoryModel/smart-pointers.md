@@ -402,6 +402,6 @@ We prefer the more efficient unique smart pointer over a shared smart pointer wh
 
 - Read Code Project on [C++ Smart Pointers](https://www.codeproject.com/Articles/541067/Cplusplus-Smart-Pointers)
 - Read informIT on [Be Smart About C++ Pointers](https://www.informit.com/articles/article.aspx?p=2085179)
-- Read Bjarne Stroustrup on [unique_ptr](https://www.stroustrup.com/C++17FAQ.html#std-unique_ptr)
-- Read David Kieras on [Using C++'s Smart Pointers](https://www.umich.edu/~eecs381/handouts/C++17_smart_ptrs.pdf)
+- Read Bjarne Stroustrup on [unique_ptr](https://www.stroustrup.com/C++11FAQ.html#std-unique_ptr)
+- Read David Kieras on [Using C++'s Smart Pointers](https://websites.umich.edu/~eecs381/handouts/C++11_smart_ptrs.pdf)
 - Read Bartosz Milewski on [Strong Pointers and Resource Management in C++](https://www.informit.com/articles/article.aspx?p=21477)
