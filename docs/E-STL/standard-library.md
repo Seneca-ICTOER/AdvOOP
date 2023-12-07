@@ -161,12 +161,12 @@ Hello World
 
 C++17 introduced the `<string_view>` library to augment the `std::string` class and avoid redundant copying operations. The class template `std::basic_string_view` defines a lightweight non-owning, read-only view into a contiguous sequence of characters with the first element at position zero.
 
-The `string_view` classes refer to sequences of character-like objects. The specializations of the `<std::basic_string_view<CharT>>` template are:
+The `string_view` classes refer to sequences of character-like objects. The specializations of the `std::basic_string_view<CharT>` template are:
 
-- `std::string_view <std::basic_string<char>>`
-- `std::wstring_view <std::basic_string<wchar_t>>`
-- `std::u16string_view <std::basic_string<char16_t>>`
-- `std::u32string_view <std::basic_string<char32_t>>`
+- `std::string_view <char>`
+- `std::wstring_view <wchar_t>`
+- `std::u16string_view <char16_t>`
+- `std::u32string_view <char32_t>`
 
 The public member functions include:
 
