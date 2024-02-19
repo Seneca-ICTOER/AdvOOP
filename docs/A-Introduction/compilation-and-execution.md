@@ -1,6 +1,6 @@
 ---
 id: compilation-and-execution
-title: Compliation and Execution
+title: Compilation and Execution
 sidebar_position: 3
 description: TBD
 ---
