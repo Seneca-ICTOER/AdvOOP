@@ -216,7 +216,7 @@ A `list` object admits comparison, assignment, expansion, element addition, and 
 - `void pop_back()` - removes the last element from the container
 - `void pop_front()` - removes the first element from the container
 - `iterator insert(iterator position, const T& elem)` - adds element `elem` at the iterator position
-- `iterator erase(iterator position, const T& elem)` - remove element `elem` at the iterator position
+- `iterator erase(const_iterator position)` - removes from container the element at the iterator position
 - `void clear()` - removes all elements from the container
 
 The subscripting operators and the `at(int)` member functions, which provide direct element access in other sequential containers, are not supported in this template. Instead, the template defines `insert()` and `erase()` member functions that use iterators. The section on iterators below described these in more detail.
@@ -397,8 +397,8 @@ The container class templates define member functions for inserting and removing
 - `iterator insert(iterator p, const T& t)` - inserts `t` at position `p` and returns an iterator pointing to the inserted element
 - `void insert(iterator p, size_t n, const T& t)` - inserts `t` `n` times at position `p`
 - `void insert(iterator p, InIter f, InIter l)` - inserts the range `[f, l)` at position `p`
-- `iterator erase(iterator p)` - removes the element at position `p` and returns an iterator to the next element
-- `iterator erase(iterator f, iterator l)` - removes the elements in the range `[f, l)` and returns an iterator to the next element
+- `iterator erase(const_iterator p)` - removes the element at position `p` and returns an iterator to the next element
+- `iterator erase(const_iterator f, const_iterator l)` - removes the elements in the range `[f, l)` and returns an iterator to the next element
 
 ### `list` Example
 
