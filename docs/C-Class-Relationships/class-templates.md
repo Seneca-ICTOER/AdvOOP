@@ -284,7 +284,7 @@ As an alternative to specialization we could overload the function for the `cons
 #include <iostream>
 #include <cstring>
 
-template <template T>
+template <typename T>
 T maximum(T a, T b)
 {
 	std::cout << "in template body\n";
