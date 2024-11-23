@@ -514,7 +514,7 @@ int main()
 {
 	int a[] = {3, 2, 4, 1};
 
-	std::sort(a, &a[4], std::greater<int>());
+	std::sort(a, &a[4], std::greater <int>());
 
 	for(int e : a)
 		std::cout << e <<  std::endl;
